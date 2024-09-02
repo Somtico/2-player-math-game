@@ -24,17 +24,20 @@ class Game
   end
 
   def check_winner
-    if !@player1.alive?
-      puts "#{@player2.name} wins with #{@player2.lives} live(s) left!"
-      puts "----- Game Over! -----"
-      return true
-    elsif !@player2.alive?
-      puts "#{@player1.name} wins with #{@player1.lives} live(s) left!"
-      puts "----- Game Over! -----"
-      return true
-    end
-    false
+  unless @player1.alive?
+    puts "#{@player2.name} wins with #{@player2.lives} live(s) left!"
+    puts "----- Game Over! -----"
+    return true
   end
+
+  unless @player2.alive?
+    puts "#{@player1.name} wins with #{@player1.lives} live(s) left!"
+    puts "----- Game Over! -----"
+    return true
+  end
+
+  false
+end
 
   def display_scores
     @player1.display_status
