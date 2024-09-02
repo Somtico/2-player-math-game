@@ -15,7 +15,7 @@ class Player
   end
 
   def display_status
-    puts "#{name} has #{lives} lives left"
+    puts "#{name}: #{lives}/3"
   end
 end
 
