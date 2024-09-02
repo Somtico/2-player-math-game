@@ -8,8 +8,7 @@ class Question
   end
 
   def ask_question(player)
-    puts "#{player.name}, what is #{@num1} + #{@num2}?"
-    player_answer = gets.chomp.to_i
+    player_answer = IOHandler.get_input("#{player.name}, what is #{@num1} + #{@num2}?").to_i
     player_answer == @answer
   end    
 end

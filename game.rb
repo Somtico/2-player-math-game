@@ -8,36 +8,36 @@ class Game
   end
 
   def switch_turns
-    puts "----- NEW TURN -----"
+    IOHandler.output_message("----- NEW TURN -----")
     @current_player = @current_player == player1 ? @player2 : @player1
   end
 
   def play_turn
     question = Question.new
     if question.ask_question(current_player)
-      puts "YES! You are correct."
+      IOHandler.output_message("YES! You are correct.")
     else
-      puts "Seriously? No!"
+      IOHandler.output_message("Seriously? No!")
       current_player.lose_life
     end
     display_scores
   end
 
   def check_winner
-  unless @player1.alive?
-    puts "#{@player2.name} wins with #{@player2.lives} live(s) left!"
-    puts "----- Game Over! -----"
-    return true
-  end
+    unless @player1.alive?
+      IOHandler.output_message("#{@player2.name} wins with #{@player2.lives} live(s) left!")
+      IOHandler.output_message("----- Game Over! -----")
+      return true
+    end
 
-  unless @player2.alive?
-    puts "#{@player1.name} wins with #{@player1.lives} live(s) left!"
-    puts "----- Game Over! -----"
-    return true
-  end
+    unless @player2.alive?
+      IOHandler.output_message("#{@player1.name} wins with #{@player1.lives} live(s) left!")
+      IOHandler.output_message("----- Game Over! -----")
+      return true
+    end
 
-  false
-end
+    false
+  end
 
   def display_scores
     @player1.display_status
@@ -45,11 +45,11 @@ end
   end
 
   def start
-    puts "Welcome to the Math Game!"
+    IOHandler.output_message("Welcome to the Math Game!")
     until check_winner
       play_turn
       switch_turns
     end
-    puts "Good bye!"
+    IOHandler.output_message("Good bye!")
   end
 end
